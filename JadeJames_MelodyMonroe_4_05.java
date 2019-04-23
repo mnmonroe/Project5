@@ -15,6 +15,12 @@ public class JadeJames_MelodyMonroe_4_05 {
       final String OUTPUT_FILE = "JadeJames_MelodyMonroe_4_05_Output.txt";
       final String EMPLOYEE_INPUT  = "EmployeeInput.txt";
       final String EMPLOYEE_PARAMETERS = "EmployeeParameters.txt";
+      
+      int maxEmployees;
+      double savingsRate;
+      double iraRate;
+      double fedTax;
+      double stateTax;
    
       
       // Input error checking
