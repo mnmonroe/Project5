@@ -86,6 +86,15 @@ public class JadeJames_MelodyMonroe_4_05 {
            empl[i].netPay = empl[i].adjustedGrossPay - empl[i].taxAmount;
            empl[i].savingsAmount = empl[i].netPay * empl[i].savingsRate / 100.0;
         }
-     
+     }
+     //**************************************************************************************************
+     //header method 6a
+   
+   
+     //**************************************************************************************************
+     //printdetails method
+     public static void printdetails(PrintWriter output, Employment[] empl, int numRead) {
+     }
+   
    
 } // End class
