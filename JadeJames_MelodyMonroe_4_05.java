@@ -76,13 +76,16 @@ public class JadeJames_MelodyMonroe_4_05 {
          } 
          }
       } //end grossPay
-      //*****************************************************************************************
-      //calculate deductions
+   //**************************************************************************************************  
+   //calculate deductions
      public static void calcDeductions(Employee[] empl, int numRead) {
-        for (int i = 0; i < numRead, ++i) {
-           empl[i].iraAmount = empl[i].grossPay * IRA Investment;
+        
+        for (int i = 0; i < numRead; ++i) {
+        
+           empl[i].iraAmount = empl[i].grossPay * employeeParameters[i].iraRate;
            empl[i].adjustedGrossPay = empl[i].grossPay - empl[i].iraAmount;
-           empl[i].taxAmount = empl[i].adjustedGrossPay * (the sum of the tax rates decimals);
+           empl[i].taxAmount = empl[i].adjustedGrossPay * (employeeParameters[i].federalWithholdingRate + 
+                                                           employeeParameters[i].stateWithholdingRate);
            empl[i].netPay = empl[i].adjustedGrossPay - empl[i].taxAmount;
            empl[i].savingsAmount = empl[i].netPay * empl[i].savingsRate / 100.0;
         }
