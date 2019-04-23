@@ -16,14 +16,14 @@ public class JadeJames_MelodyMonroe_4_05 {
       final String EMPLOYEE_INPUT  = "EmployeeInput.txt";
       final String EMPLOYEE_PARAMETERS = "EmployeeParameters.txt";
       
-      int maxEmployees;
-      double savingsRate;
-      double iraRate;
-      double fedTax;
-      double stateTax;
+      int maxEmployees;  // Max employees
+      double savingsRate; // Savings rate
+      double iraRate; // IRA rate
+      double fedTax; // Federal tax rate
+      double stateTax; // State tax rate
    
       
-      // Input error checking
+      // Input file error checking
       try {
          File inputDataFile = new File(INPUT_FILE);
          Scanner inputFile  = new Scanner(inputDataFile);
