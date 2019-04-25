@@ -88,6 +88,7 @@ public class JadeJames_MelodyMonroe_4_05 {
                                                            EmployeeParameters.stateWithholdingRate);
            empl[i].netPay = empl[i].adjustedGrossPay - empl[i].taxAmount;
            empl[i].savingsAmount = empl[i].netPay * empl[i].savingsRate / 100.0;
+           empl[i].wealth = empl[i].savingsAmount + empl[i].iraAmount;
         }
      }
      //**************************************************************************************************
@@ -98,8 +99,16 @@ public class JadeJames_MelodyMonroe_4_05 {
      //printdetails method
      public static void printdetails(PrintWriter output, Employment[] empl, int numRead) {
         for (int i = 0; i < numRead; ++i) {
-        System.out.print(empl[i].name + empl[i].grossPay + empl[i].netPay + empl[i].wealth + empl[i].taxAmount + empl[i].hoursWorked + empl[i].payRate:
-                         }                
+        System.out.println(Toolkit.padString(empl[i].name,16) + Toolkit.padString(empl[i].grossPay,7,"0.00") + 
+                         Toolkit.padString(empl[i].netPay,7,"0.00") + Toolkit.padString(empl[i].wealth,7,"0.00") + 
+                         Toolkit.padString(empl[i].taxAmount,7,"0.00") +
+                         Toolkit.padString(empl[i].hoursWorked,5,"0.00") + Toolkit.padString(empl[i].payRate,7,"0.00")); 
+        outputFile.println(Toolkit.padString(empl[i].name,16) + Toolkit.padString(empl[i].grossPay,7,"0.00") + 
+                         Toolkit.padString(empl[i].netPay,7,"0.00") + Toolkit.padString(empl[i].wealth,7,"0.00") + 
+                         Toolkit.padString(empl[i].taxAmount,7,"0.00") +
+                         Toolkit.padString(empl[i].hoursWorked,5,"0.00") + Toolkit.padString(empl[i].payRate,7,"0.00")); 
+        }   
+        
      }
    
    
