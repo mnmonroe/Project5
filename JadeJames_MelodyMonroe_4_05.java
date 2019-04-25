@@ -97,6 +97,9 @@ public class JadeJames_MelodyMonroe_4_05 {
      //**************************************************************************************************
      //printdetails method
      public static void printdetails(PrintWriter output, Employment[] empl, int numRead) {
+        for (int i = 0; i < numRead; ++i) {
+        System.out.print(empl[i].name + empl[i].grossPay + empl[i].netPay + empl[i].wealth + empl[i].taxAmount + empl[i].hoursWorked + empl[i].payRate:
+                         }                
      }
    
    
