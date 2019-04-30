@@ -60,5 +60,6 @@ public class EmployeeParameters {
          NL + "Federal withholding rate: " + federalWithholdingRate + PERCENT +
          NL + "State withholding rate: "  + stateWithholdingRate + PERCENT);
    } // End displayParameters
+
    
 } // End class
