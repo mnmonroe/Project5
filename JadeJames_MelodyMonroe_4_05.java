@@ -110,6 +110,24 @@ public class JadeJames_MelodyMonroe_4_05 {
         }   
         
      }
+   //******************************************************************************************************
+   //print totals method 6c
+   
+   //*********************************************************************************************************
+   //createReport
+   
+   createReport(PrintWriter output,Employment[] empl, int numRead) {
+   sortResult = Employee.selectionSortArrayOfClass (empl,nNames,"Name");
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
    
    
 } // End class
