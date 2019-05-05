@@ -257,6 +257,21 @@ public class JadeJames_MelodyMonroe_4_05 {
       
       }
    } // End outputData
+  //*************************************************************************************************************
+  //printdetails method
+
+     public static void printdetails(PrintWriter output, Employment[] empl, int numRead) {
+        for (int i = 0; i < numRead; ++i) {
+        System.out.println(Toolkit.padString(empl[i].name,19) + Toolkit.padString(empl[i].grossPay,8,"0.00") + 
+                         Toolkit.padString(empl[i].netPay,10,"0.00") + Toolkit.padString(empl[i].wealth,8,"0.00") + 
+                         Toolkit.padString(empl[i].taxAmount,9,"0.00") +
+                         Toolkit.padString(empl[i].hoursWorked,8,"0.00") + Toolkit.padString(empl[i].payRate,8,"0.00")); 
+        outputFile.println(Toolkit.padString(empl[i].name,16) + Toolkit.padString(empl[i].grossPay,7,"0.00") + 
+                         Toolkit.padString(empl[i].netPay,7,"0.00") + Toolkit.padString(empl[i].wealth,7,"0.00") + 
+                         Toolkit.padString(empl[i].taxAmount,7,"0.00") +
+                         Toolkit.padString(empl[i].hoursWorked,5,"0.00") + Toolkit.padString(empl[i].payRate,7,"0.00")); 
+        }   
+             }
 
 
 
