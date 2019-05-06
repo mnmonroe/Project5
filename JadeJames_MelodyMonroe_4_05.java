@@ -1,3 +1,16 @@
+/** 
+   Purpose: 
+   
+    @author Jade James & Melody Monroe
+    Project #5, CS 1050, Section 4
+    IDE: jGrasp
+    
+    WORD AND DEFINITION
+    
+    QUOTE
+
+*/
+
 import java.util.Scanner;     // Access the Scanner class
 import java.io.*;             // Access PrintWriter and related classes
 import java.io.FileReader;    // Access FileReader
@@ -28,25 +41,28 @@ public class JadeJames_MelodyMonroe_4_05 {
       String warning;
       
       // Input error checking
-      try {
-         File inputDataFile = new File(INPUT_FILE);
-         Scanner inputFile  = new Scanner(inputDataFile);
-      }
-      catch(IOException e) {
-         System.out.print ("Input file not found.");
-      }
+      //try {
+        // File inputDataFile = new File(INPUT_FILE);
+        // Scanner inputFile  = new Scanner(inputDataFile);
+     // }
+      //catch(IOException e) {
+       //  System.out.print ("Input file not found.");
+     // }
+      
+      File inputDataFile = new File(INPUT_FILE);
+      Scanner inputFile  = new Scanner(inputDataFile);
+      DecimalFormat dollars = new DecimalFormat ("$#,##0.00");
+      DecimalFormat leadingBlank = new DecimalFormat ("#.00");    
       
       // Output data to file and console
       FileWriter outputDataFile = new FileWriter(OUTPUT_FILE);
       PrintWriter outputFile = new PrintWriter(outputDataFile);
-            
+
       // Access array
       EmployeeParameters param = new EmployeeParameters();
       
       param.getEmployeeParameters();
-      
-      Employee[] empl = new Employee[param.maxEmployees]; 
-      
+        
       // Store parameters in local variables
       maxEmployees = param.maxEmployees;
       savingsRate = param.savingsRate;
@@ -54,8 +70,14 @@ public class JadeJames_MelodyMonroe_4_05 {
       fedRate = param.federalWithholdingRate;
       stateRate = param.stateWithholdingRate;
       
+     
+      Employee[] empl = new Employee[maxEmployees]; 
+      
+      numRead = readData (inputFile, empl);
+              
       // Dispay the employee parameters
       param.displayEmployeeParameters();
+      outputFile.println();
       System.out.println();
                
       grossPay (empl, numRead);
@@ -63,16 +85,17 @@ public class JadeJames_MelodyMonroe_4_05 {
       calcDeductions (empl, iraRate, fedRate, stateRate, savingsRate, numRead);
       
       // Output data to the console and output file
-      outputMaster (outputFile, "Input", empl, numRead); 
+      printReport(outputFile,"Input",empl,numRead); 
       
       // Sort data by employee name
-      outputMaster (outputFile,"Name",empl,numRead);
+      printReport (outputFile,"Name",empl,numRead);
       sortResult = Employee.selectionSortArrayOfClass(empl, numRead, "Name");
       
       // Sort data by ascending gross pay
-      outputMaster (outputFile, "Gross Pay", empl, numRead);
+      printReport (outputFile, "Gross Pay", empl, numRead);
       sortResult = Employee.selectionSortArrayOfClass(empl, numRead, "Gross Pay");
    
+      inputFile.close(); // Close input file
       outputDataFile.close(); // Close output file
         
       System.exit(0);  // Exit program
@@ -217,17 +240,18 @@ public class JadeJames_MelodyMonroe_4_05 {
             
             numRead;
    
-      System.out.println(str);
-      output.println(str);
+      System.out.println(str.trim());
+      output.println(str.trim());
    
    }
    //**************************************************************************************************
    
 // Run all the methods to output data
-   public static void outputMaster(PrintWriter output, String order, Employee[] empl, int numRead) {
+   public static void printReport(PrintWriter output,String order,Employee[] empl, 
+                     int numRead) {
    
       printHeader(output, order);
-      outputData(empl, output, numRead);
+      outputData(output,empl,numRead);
       getTotals(empl, output, numRead);
    
     }
@@ -252,24 +276,32 @@ public class JadeJames_MelodyMonroe_4_05 {
             " " + tools.leftPad(empl[i].payRate, 8, DOLLAR) +
             " ";
       
-         output.println(str);
-         System.out.println(str);
+         output.println(str.trim());
+         System.out.println(str.trim());
       
       }
    } // End outputData
   //*************************************************************************************************************
   //printdetails method
 
-     public static void printdetails(PrintWriter output, Employment[] empl, int numRead) {
-        for (int i = 0; i < numRead; ++i) {
-        System.out.println(Toolkit.padString(empl[i].name,19) + Toolkit.padString(empl[i].grossPay,8,"0.00") + 
-                         Toolkit.padString(empl[i].netPay,10,"0.00") + Toolkit.padString(empl[i].wealth,8,"0.00") + 
-                         Toolkit.padString(empl[i].taxAmount,9,"0.00") +
-                         Toolkit.padString(empl[i].hoursWorked,8,"0.00") + Toolkit.padString(empl[i].payRate,8,"0.00")); 
-        outputFile.println(Toolkit.padString(empl[i].name,16) + Toolkit.padString(empl[i].grossPay,7,"0.00") + 
-                         Toolkit.padString(empl[i].netPay,7,"0.00") + Toolkit.padString(empl[i].wealth,7,"0.00") + 
-                         Toolkit.padString(empl[i].taxAmount,7,"0.00") +
-                         Toolkit.padString(empl[i].hoursWorked,5,"0.00") + Toolkit.padString(empl[i].payRate,7,"0.00")); 
+     public static void printDetails(Employee[] empl, PrintWriter output, int numRead) {
+        
+        final String DOLLAR = "$##,##0.00"; 
+        double wealth = 0.0;
+      
+        
+        for (int i = 0; i < numRead; ++i) 
+        {
+        
+        wealth = empl[i].savingsAmount + empl[i].iraAmount;
+        String details = (tools.padString(empl[i].name,16) + tools.leftPad(empl[i].grossPay,8, DOLLAR) + 
+                         tools.leftPad(empl[i].netPay, 10, DOLLAR) + tools.leftPad(empl[i].wealth, 8, DOLLAR) + 
+                         tools.leftPad(empl[i].taxAmount, 9, DOLLAR) +
+                         tools.leftPad(empl[i].hoursWorked,8, DOLLAR) + tools.leftPad(empl[i].payRate,8,DOLLAR));
+               
+        System.out.println(details.trim());
+        output.println(details.trim());  
+        
         }   
              }
 
