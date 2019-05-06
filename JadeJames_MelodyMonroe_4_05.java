@@ -1,5 +1,7 @@
 /** 
-   Purpose: 
+   Purpose: This program calculates gross pay, net pay, 
+   wealth, taxes, hours and pay rate based on data 
+   input file.
    
     @author Jade James & Melody Monroe
     Project #5, CS 1050, Section 4
@@ -33,7 +35,8 @@ public class JadeJames_MelodyMonroe_4_05 {
       
       int maxEmployees;
       int numRead = 0;
-      int sortResult = 0;
+      int sortResultEmployee = 0;
+      int sortResultGrossPay = 0;
       double savingsRate;
       double iraRate;
       double fedRate;
@@ -85,16 +88,16 @@ public class JadeJames_MelodyMonroe_4_05 {
       calcDeductions (empl, iraRate, fedRate, stateRate, savingsRate, numRead);
       
       // Output data to the console and output file
-      printReport(outputFile,"Input",empl,numRead); 
+      printReport(outputFile,"Input", empl, numRead); 
       
       // Sort data by employee name
-      printReport (outputFile,"Name",empl,numRead);
-      sortResult = Employee.selectionSortArrayOfClass(empl, numRead, "Name");
+      sortResultEmployee = Employee.selectionSortArrayOfClass(empl, numRead, "Name");
+      printReport (outputFile,"Name", empl, numRead);
       
       // Sort data by ascending gross pay
+      sortResultGrossPay = Employee.selectionSortArrayOfClass(empl, numRead, "Gross Pay");
       printReport (outputFile, "Gross Pay", empl, numRead);
-      sortResult = Employee.selectionSortArrayOfClass(empl, numRead, "Gross Pay");
-   
+      
       inputFile.close(); // Close input file
       outputDataFile.close(); // Close output file
         
@@ -163,7 +166,7 @@ public class JadeJames_MelodyMonroe_4_05 {
    }
 
    //**************************************************************************************************
-   //header method 6a
+   // Print heading row to report
    public static void printHeader (PrintWriter output, String order) {
          
       String reportHeading;
